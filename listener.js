@@ -1,8 +1,8 @@
 const logger = require("node-color-log");
 const io = require("socket.io-client");
-const socket = io("http://localhost:3000");
 
 (() => {
+  const socket = io(`http://${process.argv[2]}:3000`);
   setInterval(() => null, 30000);
   socket.on("eqInfo", (data) => {
     logger.info(data);
