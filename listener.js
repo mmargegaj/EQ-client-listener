@@ -17,6 +17,8 @@ const io = require("socket.io-client");
     if (reason === "io server disconnect") {
       // the disconnection was initiated by the server, you need to reconnect manually
       socket.connect();
+    } else if (reason === "transport close"){
+      logger.error("Server stopped");
     }
     // else the socket will automatically try to reconnect
   });
