@@ -30,4 +30,7 @@ const io = require("socket.io-client");
   socket.on("new_earthquakes", (data) => {
     logger.info(data);
   });
+  socket.on("new_predictions", (data) => {
+    logger.info(data);
+  });
 })();
