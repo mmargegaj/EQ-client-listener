@@ -1,14 +1,14 @@
 const logger = require("node-color-log");
 const io = require("socket.io-client");
 
-const socket = io(`http://localhost:3002`);
+const socket = io(`http://62.171.176.99:3000`);
 
 socket.on("eqInfo", (data) => {
   logger.info(data);
 });
 
-socket.on("connection", () => {
-  logger.info("connected");
+socket.on("connect", () => {
+  logger.info("socket connected");
 });
 
 socket.on("disconnect", (reason) => {
@@ -22,14 +22,16 @@ socket.on("disconnect", (reason) => {
   // else the socket will automatically try to reconnect
 });
 
-socket.on("predictionInfo", (data) => {
-  logger.info(data);
+socket.on("successful_prediction", (data) => {
+  try {
+    const a = JSON.parse(data);
+    logger.info(`Successful prediction: ${a.message}`);
+  } catch (error) {}
 });
 
-socket.on("new_earthquakes", (data) => {
-  logger.info(data);
-});
-
-socket.on("predictions", (data) => {
-  logger.info(data);
+socket.on("new_predictions", (data) => {
+  try {
+    const a = JSON.parse(data);
+    logger.info(`${a.length} new predictions`);
+  } catch (error) {}
 });
