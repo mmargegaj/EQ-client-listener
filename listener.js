@@ -1,7 +1,7 @@
 const logger = require("node-color-log");
 const io = require("socket.io-client");
 
-const socket = io(`http://62.171.176.99:3000`);
+const socket = io(`ws://62.171.176.99:3000`);
 
 socket.on("eqInfo", (data) => {
   logger.info(data);
