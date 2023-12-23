@@ -1,14 +1,9 @@
-const logger = require("node-color-log");
 const io = require("socket.io-client");
 
 const socket = io(`ws://62.171.176.99:3000`);
 
-socket.on("eqInfo", (data) => {
-  logger.info(data);
-});
-
 socket.on("connect", () => {
-  logger.info("socket connected");
+  console.log("socket connected");
 });
 
 socket.on("disconnect", (reason) => {
@@ -24,14 +19,15 @@ socket.on("disconnect", (reason) => {
 
 socket.on("successful_prediction", (data) => {
   try {
-    const a = JSON.parse(data);
-    logger.info(`Successful prediction: ${a.message}`);
+    const successfulPrediction = JSON.parse(data);
+    console.log(`Successful prediction: ${successfulPrediction}`);
   } catch (error) {}
 });
 
 socket.on("new_predictions", (data) => {
   try {
-    const a = JSON.parse(data);
-    logger.info(`${a.length} new predictions`);
+    const predictions = JSON.parse(data);
+    console.log(`${predictions.length} new predictions`);
+    // do something with predictions
   } catch (error) {}
 });

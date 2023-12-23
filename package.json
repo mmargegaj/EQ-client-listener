@@ -17,7 +17,6 @@
   },
   "homepage": "https://github.com/mmargegaj/EQ-client-listener#readme",
   "dependencies": {
-    "node-color-log": "^10.0.2",
     "socket.io-client": "^4.6.1"
   }
 }
