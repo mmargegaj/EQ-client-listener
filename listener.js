@@ -1,20 +1,17 @@
-const io = require("socket.io-client");
+const { io } = require("socket.io-client");
 
 const socket = io(`ws://62.171.176.99:3000`);
 
 socket.on("connect", () => {
-  console.log("socket connected");
+  console.log("Socket connected. Listening...");
 });
 
 socket.on("disconnect", (reason) => {
-  logger.warn(reason);
-  if (reason === "io server disconnect") {
-    // the disconnection was initiated by the server, you need to reconnect manually
-    socket.connect();
-  } else if (reason === "transport close") {
-    logger.error("Server died");
-  }
-  // else the socket will automatically try to reconnect
+  console.log(`Disconnected: ${reason}`);
+});
+
+socket.on("message", (data) => {
+  console.log(data);
 });
 
 socket.on("successful_prediction", (data) => {
