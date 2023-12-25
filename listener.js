@@ -18,7 +18,9 @@ socket.on("successful_prediction", (data) => {
   try {
     const successfulPrediction = JSON.parse(data);
     console.log(`Successful prediction: ${successfulPrediction}`);
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
 
 socket.on("new_predictions", (data) => {
@@ -26,5 +28,7 @@ socket.on("new_predictions", (data) => {
     const predictions = JSON.parse(data);
     console.log(`${predictions.length} new predictions`);
     // do something with predictions
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 });
