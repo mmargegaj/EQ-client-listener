@@ -10,10 +10,6 @@ socket.on("disconnect", (reason) => {
   console.log(`Disconnected: ${reason}`);
 });
 
-socket.on("message", (data) => {
-  console.log(data);
-});
-
 socket.on("successful_prediction", (data) => {
   try {
     console.log(`Successful prediction: ${data}`);
