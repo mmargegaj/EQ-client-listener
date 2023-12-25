@@ -16,16 +16,14 @@ socket.on("message", (data) => {
 
 socket.on("successful_prediction", (data) => {
   try {
-    const successfulPrediction = JSON.parse(data);
-    console.log(`Successful prediction: ${successfulPrediction}`);
+    console.log(`Successful prediction: ${data}`);
   } catch (error) {
     console.log(error);
   }
 });
 
-socket.on("new_predictions", (data) => {
+socket.on("new_predictions", ({ predictions }) => {
   try {
-    const predictions = JSON.parse(data);
     console.log(`${predictions.length} new predictions`);
     // do something with predictions
   } catch (error) {
