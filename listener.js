@@ -10,9 +10,10 @@ socket.on("disconnect", (reason) => {
   console.log(`Disconnected: ${reason}`);
 });
 
-socket.on("successful_prediction", (data) => {
+socket.on("successful_prediction", ({ earthquake, prediction }) => {
   try {
-    console.log(`Successful prediction: ${data}`);
+    console.log(prediction);
+    console.log(earthquake.text);
   } catch (error) {
     console.log(error);
   }
@@ -26,3 +27,6 @@ socket.on("new_predictions", ({ predictions }) => {
     console.log(error);
   }
 });
+
+// You can also make get requests to get daily reports
+// Try a get request to http://62.171.176.99:3000/reports?page=1&limit=20
